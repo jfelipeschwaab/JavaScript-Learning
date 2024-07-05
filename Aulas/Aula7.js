@@ -1,4 +1,4 @@
-//Módulo 6 CodeCademy
+//Módulo 7 CodeCademy
 //ITERATORS
 
 //The forEach() method
