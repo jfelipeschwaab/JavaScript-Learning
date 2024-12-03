@@ -232,3 +232,54 @@ async function usingTryCatch() {
 
 usingTryCatch();
 */
+
+async function hostDinnerParty() {
+    try {
+        let responseCookBean = await cookBeanSouffle();
+        console.log(`${responseCookBean} is served!`)
+    } catch (error) {
+        console.log(error);
+        console.log('Ordering a pizza!')
+    }
+}
+
+hostDinnerParty();
+
+//7. Handling Independent Promises
+/*
+Lembra que o await "pausa" a execução da nossa async function. Isso nos convenientemente escrever synchronous-style code para lidar com 
+dependent promises. Mas e se nossa async function conter múltiplas promises que não são dependentes do resultado uma das outras para executar?
+EX:
+
+async function waiting() {
+ const firstValue = await firstAsyncThing();
+ const secondValue = await secondAsyncThing();
+ console.log(firstValue, secondValue);
+}
+
+async function concurrent() {
+ const firstPromise = firstAsyncThing();
+ const secondPromise = secondAsyncThing();
+console.log(await firstPromise, await secondPromise);
+}
+
+na primeira função, primeiro espera-se resolver a primeira, para aí sim resolver a segunda
+na segunda função, apenas damos o await nas respostas delas, dessa maneira, ambas as operações assíncronas podem ser rodadas simultaneamente,
+com async functions temos que tomar vantagem da concurrency, a habilidade de performar ações assíncronas ao mesmo tempo.
+*/
+
+async function serveDinner() {
+    let vegetablePromise = steamBroccoli();
+    let starchPromise = cookRice();
+    let proteinPromise = bakeChicken();
+    let sidePromise = cookBeans();
+
+    console.log(`Dinner is served. We're having ${await vegetablePromise}, ${await starchPromise}, ${await proteinPromise}, and ${await sidePromise}`)
+}
+
+serveDinner();
+
+//8. Await Promise.all()
+/*
+Podemos fazer com Promise.all()
+*/
